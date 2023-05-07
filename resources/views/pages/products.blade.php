@@ -22,6 +22,8 @@
             </button>
     </div>
     <div class="grid grid-cols-5 gap-1 space-x-2 mt-4" id="products-container">
+
+        @forelse($products as $product)
         <a href="#" class="block max-w-sm px-6 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 h-calc[100vh-1rem]">
             <div class="flex items-end justify-end">
                 <span class="text-[8px] text-white bg-green-700 p-1 rounded font-light tight">NEW</span>&nbsp
@@ -29,18 +31,18 @@
                 <i class="fa fa-fire text-red-500"></i>
             </div>
             <div class="flex items-center space-between">
-                <span class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white flex-1">Product Code</span>
+                <span class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white flex-1">{{$product->code}}</span>
 
             </div>
             <img src="{{asset('/storage/temp/placeholder.png')}}" alt="" class="h-100 w-100 rounded justify-center mx-auto">
             <p class="font-normal text-gray-700 dark:text-gray-400">Color Variants</p>
             <div id="color-variants" class="grid grid-cols-8 sm:grid-cols-4 md:grid-cols-4">
-                <div class="lg:h-[20px] lg:w-[20px] block rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2" style="background-color:#451125"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-red-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-yellow-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-purple-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-indigo-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-gray-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
+                <p class="text-purple-700">{{$product->colors}}</p>
+
+                @foreach($product->colors as $color)
+                    <div class="lg:h-[20px] lg:w-[20px] block rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2" style="background-color:#451125"></div>
+                @endforeach
+
             </div>
             <p class="font-normal text-gray-700">Available Sizes</p>
             <div id="size-variants" class="grid grid-cols-4">
@@ -53,72 +55,8 @@
                 <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
             </div>
         </a>
-
-        <a href="#" class="block max-w-sm px-6 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 h-calc[100vh-1rem]">
-            <div class="flex items-end justify-end">
-                <span class="text-[8px] text-white bg-green-700 p-1 rounded font-light tight">NEW</span>&nbsp
-                <i class="fas fa-star text-yellow-300"></i>&nbsp
-                <i class="fa fa-fire text-red-500"></i>
-            </div>
-            <div class="flex items-center space-between">
-                <span class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white flex-1">Product Code</span>
-
-            </div>
-            <img src="{{asset('/storage/temp/placeholder.png')}}" alt="" class="h-100 w-100 rounded justify-center mx-auto">
-            <p class="font-normal text-gray-700 dark:text-gray-400">Color Variants</p>
-            <div id="color-variants" class="grid grid-cols-8 sm:grid-cols-4 md:grid-cols-4">
-                <div class="lg:h-[20px] lg:w-[20px] block rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2" style="background-color:#451125"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-red-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-yellow-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-purple-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-indigo-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-gray-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-            </div>
-            <p class="font-normal text-gray-700">Available Sizes</p>
-            <div id="size-variants" class="grid grid-cols-4">
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-            </div>
-        </a>
-
-        <a href="#" class="block max-w-sm px-6 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 h-calc[100vh-1rem]">
-            <div class="flex items-end justify-end">
-                <span class="text-[8px] text-white bg-green-700 p-1 rounded font-light tight">NEW</span>&nbsp
-                <i class="fas fa-star text-yellow-300"></i>&nbsp
-                <i class="fa fa-fire text-red-500"></i>
-            </div>
-            <div class="flex items-center space-between">
-                <span class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white flex-1">Product Code</span>
-
-            </div>
-            <img src="{{asset('/storage/temp/placeholder.png')}}" alt="" class="h-100 w-100 rounded justify-center mx-auto">
-            <p class="font-normal text-gray-700 dark:text-gray-400">Color Variants</p>
-            <div id="color-variants" class="grid grid-cols-8 sm:grid-cols-4 md:grid-cols-4">
-                <div class="lg:h-[20px] lg:w-[20px] block rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2" style="background-color:#451125"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-red-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-yellow-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-purple-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-indigo-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                <div class="lg:h-[20px] lg:w-[20px] block bg-gray-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-            </div>
-            <p class="font-normal text-gray-700">Available Sizes</p>
-            <div id="size-variants" class="grid grid-cols-4">
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-            </div>
-        </a>
+        @empty
+        @endforelse
     </div>
 
     <div id="new-product-modal" class="fixed top-0 left-0 right-0 z-50 hidden overflow-x-hidden overflow-y-auto md:inset-0 max-h-full h-calc[100%-1rem]">
@@ -391,66 +329,5 @@
             });
         });
 
-        $(document).ready(function() {
-            loadProducts("asd", 3, null, null, null);
-        })
-
-        function loadProducts(code, category_id, colors, sizes, order_by) {
-            var formData = new FormData();
-            formData.append('code', code);
-            formData.append('category_id', category_id);
-            formData.append('colors', colors);
-            formData.append('sizes', sizes);
-            formData.append('order_by', order_by);
-
-            var url = "{{route('query-products')}}";
-
-            axios.post(url, formData, {}).then(function(response) {
-                console.log(response.data);
-            }).catch(function(error) {
-                console.log(error.response.data)
-            });
-        }
-
-        function displayProducts(products) {
-            let products_container = document.querySelector('#products-container');
-            let display = "";
-
-            products.forEach(product => {
-                display += `<a href="#" class="block max-w-sm px-6 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 h-calc[100vh-1rem]" onclick="showProductDetails()">
-                    <div class="flex items-end justify-end">
-                        <span class="text-[8px] text-white bg-green-700 p-1 rounded font-light tight">NEW</span>&nbsp
-                        <i class="fas fa-star text-yellow-300"></i>&nbsp
-                        <i class="fa fa-fire text-red-500"></i>
-                    </div>
-                    <div class="flex items-center space-between">
-                        <span class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white flex-1">Product Code</span>
-
-                    </div>
-                    <img src="{{asset('/storage/temp/placeholder.png')}}" alt="" class="h-100 w-100 rounded justify-center mx-auto">
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Color Variants</p>
-                    <div id="color-variants" class="grid grid-cols-8 sm:grid-cols-4 md:grid-cols-4">
-                        <div class="lg:h-[20px] lg:w-[20px] block rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2" style="background-color:#451125"></div>
-                        <div class="lg:h-[20px] lg:w-[20px] block bg-red-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                        <div class="lg:h-[20px] lg:w-[20px] block bg-yellow-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                        <div class="lg:h-[20px] lg:w-[20px] block bg-purple-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                        <div class="lg:h-[20px] lg:w-[20px] block bg-indigo-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                        <div class="lg:h-[20px] lg:w-[20px] block bg-gray-700 rounded-xl ml-2 md:h-[10px] md:w-[10px] sm:h-[10px] sm:w-[10px] mb-2"></div>
-                    </div>
-                    <p class="font-normal text-gray-700">Available Sizes</p>
-                    <div id="size-variants" class="grid grid-cols-4">
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                        <div class="rounded-lg w-[30px] border-2 border-gray-400 text-center text-sm" >S</div>
-                    </div>
-                </a>`;
-            });
-
-            products_container.html(display);
-        }
     </script>
 @endpush

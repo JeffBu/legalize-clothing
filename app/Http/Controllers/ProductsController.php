@@ -14,7 +14,12 @@ class ProductsController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view('pages.products')->with(['categories' => $categories]);
+        $products = Product::with('images')->latest()->get();
+        foreach($products as $product)
+        {
+
+        }
+        return view('pages.products')->with(['categories' => $categories, 'products' => $products]);
     }
 
     public function create(Request $request){
@@ -66,7 +71,7 @@ class ProductsController extends Controller
 
             foreach($request->file('images') as $key => $file) {
                 $fileName = time().'_'.$file->getClientOriginalName();
-                Storage::disk('local')->put($fileName, $file->getContent());
+                Storage::disk('public')->put($fileName, $file->getContent());
                 ProductImage::create([
                     'product_id' => $product_id,
                     'name' => $fileName,
